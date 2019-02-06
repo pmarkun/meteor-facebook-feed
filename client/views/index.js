@@ -1,12 +1,16 @@
-var MAX_RETRIEVED_POSTS = 20;
+var MAX_RETRIEVED_POSTS = 5;
 
 displayedCards = new ReactiveVar('');
 retrievedCards = new ReactiveVar('');
 keywords = new ReactiveVar('');
+fbPages = ['eusouhelou', 'bancadaativista', 'JanainaPaschoalOficial', 'deputadoabelardocamarinha', 'pr.adilsonrossi', 'IsaPennaPsol', 'ericamalunguinho50888']
 
-function getInitialCards() {
+function getInitialCards(fbPage=null) {
 
-    var fbPage = Session.get("fbPage");
+    //var fbPage = Session.get("fbPage");
+    if (fbPages) {
+      fbPage = fbPages.pop()
+    }
     if (fbPage) {
         //get page posts
         Meteor.call('getProcessedPagePosts', fbPage, MAX_RETRIEVED_POSTS, function (err, postsData) {
@@ -16,10 +20,19 @@ function getInitialCards() {
             }
             else {
                 if (postsData && postsData.data) {
-
-                    displayedCards.set(postsData.data);
-                    retrievedCards.set(postsData.data);
-
+                    console.log(postsData.data);
+                    if (displayedCards.get() == '') {
+                      displayedCards.set(postsData.data);
+                      retrievedCards.set(postsData.data);
+                    }
+                    else {
+                      oldCards = retrievedCards.get();
+                      newCards = postsData.data;
+                      cards = oldCards.concat(newCards);
+                      cards.sort((a, b) => b.rawTime - a.rawTime);
+                      displayedCards.set(cards);
+                      retrievedCards.set(cards);
+                    }
                     $('#refreshPostsButton').removeClass('disabled');
 
                     //pagination
@@ -31,6 +44,9 @@ function getInitialCards() {
                     }
                 }
                 Session.set("retrievingCards", false);
+                if (fbPages) {
+                  getInitialCards();
+                }
             }
         });
     }
@@ -128,7 +144,7 @@ Template.postsContainerTemplate.onRendered(function () {
 
     $(window).scroll(function () {
         if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
-            loadMoreCards();
+            //loadMoreCards();
         }
     });
 });
@@ -184,7 +200,7 @@ Template.index.events({
     },
 
     'click #loadMorePostsButton': function () {
-        loadMoreCards();
+        //loadMoreCards();
     }
 });
 

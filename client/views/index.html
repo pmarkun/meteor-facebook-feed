@@ -2,47 +2,12 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Meteor Facebook Feed - Your awesome Meteor app | ICENodes </title>
+    <title>Acompanhamento Parlamentar</title>
     <meta name="description"
           content="Meteor app for retrieving and displaying a Facebook page feed. Built by ICENodes"/>
 
     <!-- Roboto font -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,300,700' rel='stylesheet' type='text/css'>
-
-    <!-- Twitter Card data -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@icenodes">
-    <meta name="twitter:title" content="Meteor app for retrieving and displaying a Facebook page feed">
-    <meta name="twitter:description"
-          content="Meteor app for retrieving and displaying a Facebook page feed. Built by ICENodes">
-    <meta name="twitter:creator" content="@cambrozie">
-    <meta name="twitter:image" content="http://meteor-facebook-feed.icenodes.com/images/meteor-facebook-feed.jpg">
-
-    <!-- Open Graph data -->
-    <meta property="og:title" content="Meteor app for retrieving and displaying a Facebook page feed"/>
-    <meta property="og:type" content="article"/>
-    <meta property="og:url" content="http://meteor-facebook-feed.icenodes.com"/>
-    <meta property="og:image" content="http://meteor-facebook-feed.icenodes.com/images/meteor-facebook-feed.jpg"/>
-    <meta property="og:description"
-          content="Meteor app for retrieving and displaying a Facebook page feed. Built by ICENodes"/>
-    <meta property="og:site_name" content="ICENodes"/>
-
-    <script>
-        (function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-                    m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-        ga('create', 'UA-309852-20', 'auto');
-        ga('send', 'pageview');
-    </script>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="/images/favicon.png">
@@ -57,32 +22,16 @@
         <div class="row">
             <div class="col-md-4 col-md-offset-4 project-name">
                 <a href="https://github.com/cambrozie/meteor-facebook-feed">
-                    <i class="fa fa-github"></i>&nbsp;&nbsp;&nbsp;<b>Meteor Facebook Feed</b>
+                    <i class="fa fa-github"><b>Acompanhamento Parlamentar</b></i>
                 </a>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4 col-md-offset-4 share-buttons">
-                <a class="btn btn-primary btn-sm twitter-share"
-                   href="https://twitter.com/home?status=Check%20out%20this%20Facebook%20feed%20for%20your%20%40meteorjs%20app!%20By%20%40icenodes%20%23meteorjs%20%23startup%20https://github.com/cambrozie/meteor-facebook-feed">Share
-                    on Twitter</a>
-                <a class="btn btn-primary btn-sm fb-share"
-                   href="https://www.facebook.com/sharer/sharer.php?u=http://meteor-facebook-feed.icenodes.com/">Share on
-                    Facebook</a>
-                <a class="btn btn-primary btn-sm fb-share"
-                   href="https://github.com/cambrozie/meteor-facebook-feed"><i
-                        class="fa fa-github"></i> GitHub Project</a>
-            </div>
-        </div>
-        <div class="row">
             <div class="col-md-6 col-md-offset-3">
-                Meteor showcase app for retrieving and displaying a Facebook page feed using Masonry
-                cascading grid layout. Features include changing the page, filtering the posts based on keywords and
-                refreshing the posts. You can enter multiple search keywords - separated by space - and the results will
-                display the posts containing at least one keyword from the given ones.
+                Um app para acompanhar as redes sociais dos parlamentares.
             </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-md-6 col-md-offset-3 fbPage-col">
                 <div class="col-md-6 col-md-offset-2 fbPage-name">
                     <b>facebook.com/{{fbPage}}</b>
@@ -112,6 +61,7 @@
                 </div>
             </div>
         </div>
+      -->
         <div class="row">
             <div class="col-md-3 col-md-offset-4 search-result-col">
                 {{#if keywords}}
@@ -186,6 +136,7 @@
         {{/if}}
 
         <i class="fa fa-facebook-square"></i>
+        <b>{{page}}</b>
         <span>{{createdTime}}</span>
 
         {{#if message}}

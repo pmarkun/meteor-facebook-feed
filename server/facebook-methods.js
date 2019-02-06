@@ -55,9 +55,11 @@ Meteor.methods({
                 card.message = post.message;
                 card.link = post.link;
                 card.createdTime = moment(post.created_time).format('DD MMMM');
+                card.rawTime = moment(post.created_time).format('x');
                 if (post.type == "photo") {
                     card.imageSource = post.object_id;
                 }
+                card.page = pageName;
                 cards.push(card);
             });
             postsData.data = cards;
